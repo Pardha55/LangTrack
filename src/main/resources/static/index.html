@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LangTrack | Learn Every Day</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<section id="authScreen" class="auth-wrap">
+  <div class="card auth-card">
+    <div class="brand"><div class="brand-logo">🌐</div><div><h1>LangTrack</h1><div class="muted">Learn a little. Improve every day.</div></div></div>
+    <div id="loginPanel">
+      <h2>I already have an account</h2><p class="muted">Welcome back! Continue your learning journey.</p>
+      <form id="loginForm">
+        <label class="field"><span>Email or username</span><input id="loginId" autocomplete="username" required placeholder="Enter email or username"></label>
+        <label class="field"><span>Password</span><input id="loginPassword" type="password" autocomplete="current-password" required placeholder="Enter password"></label>
+        <button class="primary" type="submit">Log in</button>
+      </form>
+      <p class="auth-switch">New to LangTrack? <button id="showSignup" class="text-button" type="button">Get started · Sign up</button></p>
+    </div>
+    <div id="signupPanel" hidden>
+      <h2>Get started</h2><p class="muted">Create your LangTrack account.</p>
+      <form id="signupForm">
+        <label class="field"><span>Username</span><input id="signupUsername" autocomplete="username" required placeholder="Choose a username"></label>
+        <label class="field"><span>Email</span><input id="signupEmail" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+        <label class="field"><span>Password (at least 8 characters)</span><input id="signupPassword" type="password" minlength="8" autocomplete="new-password" required placeholder="Create a password"></label>
+        <button class="primary" type="submit">Create account</button>
+      </form>
+      <p class="auth-switch">Already registered? <button id="showLogin" class="text-button" type="button">Log in</button></p>
+    </div>
+    <p id="authStatus" class="auth-status" role="status" aria-live="polite"></p>
+  </div>
+</section>
+
+<div id="appScreen" hidden>
+  <main class="page">
+    <header class="topbar">
+      <div class="brand"><div class="brand-logo">🌐</div><div><h1>LangTrack</h1><div id="welcomeText" class="user-greeting">Your learning journey</div></div></div>
+      <button id="openProfile" class="icon-button" type="button" aria-label="Open profile">👤</button>
+    </header>
+    <div class="stats" aria-label="Your learning statistics">
+      <div class="stat stat-streak"><span class="emoji">🔥</span><div><strong id="currentStreak">0</strong><small>Day streak</small></div></div>
+      <div class="stat stat-xp"><span class="emoji">⚡</span><div><strong id="totalXp">0</strong><small>Total XP</small></div></div>
+      <div class="stat stat-lives"><span class="emoji">❤️</span><div><strong id="livesCount">5</strong><small>Lives left</small></div></div>
+    </div>
+
+    <section id="homeView" class="app-view">
+      <h2 class="section-title">Your learning path</h2><p class="section-subtitle">Follow the path, complete each submodule, and unlock the next step.</p>
+      <div id="lessonsContainer"><p class="muted">Loading lessons...</p></div>
+      <p id="learningPathStatus" class="status" role="status" aria-live="polite"></p>
+      <div id="quizHost">
+      <section id="quizCard" class="card quiz-card" hidden>
+        <div class="topbar"><div><h2 id="quizTitle" style="margin:0">Practice</h2><p id="quizSubtitle" class="muted" style="margin:4px 0 0">Answer each question.</p></div><button id="closeQuiz" class="icon-button" type="button" aria-label="Close quiz">✕</button></div>
+        <p id="quizStatus" class="status" role="status" aria-live="polite"></p>
+        <div id="questionArea" hidden><h3 id="questionNumber"></h3><p id="questionText"></p><div id="optionsArea"></div><p id="answerFeedback" class="status" aria-live="polite"></p><div class="quiz-actions"><button id="nextQuestion" class="primary" type="button" hidden>Next</button></div></div>
+      </section>
+      </div>
+    </section>
+
+    <section id="leaderboardView" class="app-view" hidden>
+      <h2 class="section-title">🏆 Weekly leaderboard</h2><p class="section-subtitle">See who earned the most XP this week.</p>
+      <div class="card"><p id="leaderboardStatus" class="status" role="status" aria-live="polite">Loading leaderboard...</p><table class="leaderboard-table"><thead><tr><th>Rank</th><th>Player</th><th>Weekly XP</th></tr></thead><tbody id="leaderboardBody"><tr><td colspan="3">Loading...</td></tr></tbody></table><button id="refreshLeaderboard" class="secondary" type="button" style="margin-top:14px">Refresh leaderboard</button></div>
+    </section>
+  </main>
+  <div id="moreBackdrop" class="more-backdrop" hidden></div>
+  <div id="moreMenu" class="more-menu" hidden>
+    <button type="button" data-more="profile">👤 &nbsp; Profile</button>
+    <button type="button" data-more="settings">⚙️ &nbsp; Settings</button>
+    <button type="button" data-more="logout" class="danger">↪ &nbsp; Log out</button>
+  </div>
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <button class="nav-button active" data-tab="home" type="button"><span class="nav-icon">⌂</span>Home</button>
+    <button class="nav-button" data-tab="leaderboard" type="button"><span class="nav-icon">🏆</span>Leaderboard</button>
+    <button class="nav-button" data-tab="more" type="button"><span class="nav-icon">•••</span>More</button>
+  </nav>
+</div>
+
+<div id="modalBackdrop" class="modal-backdrop" hidden>
+  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-head"><h2 id="modalTitle">Profile</h2><button id="closeModal" class="icon-button" type="button" aria-label="Close">✕</button></div>
+    <div id="modalContent"></div>
+  </section>
+</div>
+
+
+
+<script src="/js/app.js" defer></script>
+<script src="/js/auth.js" defer></script>
+<script src="/js/learning.js" defer></script>
+<script src="/js/progress.js" defer></script>
+<script src="/js/leaderboard.js" defer></script>
+<script src="/js/quiz.js" defer></script>
+</body>
+</html>

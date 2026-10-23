@@ -28,10 +28,11 @@ public class SubModuleController {
     }
 
     @GetMapping("/lesson/{lessonId}")
-    public List<SubModule> getSubModulesByLesson(@PathVariable Long lessonId) {
-        return repository.findByLessonIdOrderByOrderNumber(lessonId);
-    }
-
+public List<SubModule> getSubModulesByLesson(@PathVariable Long lessonId) {
+   return repository
+        .findByModule_Lesson_IdOrderByModule_ModuleNumberAscOrderNumberAsc(
+                lessonId);
+}
     @PostMapping
     public SubModule createSubModule(@RequestBody SubModule subModule) {
         return repository.save(subModule);

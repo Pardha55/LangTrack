@@ -1,6 +1,9 @@
 package com.pardha.langtrack.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Progress {
@@ -16,6 +19,8 @@ public class Progress {
     private int score;
 
     private boolean completed;
+
+    private int xpEarned;
 
     public Progress() {
     }
@@ -43,6 +48,10 @@ public class Progress {
         return score;
     }
 
+    public int getXpEarned() {
+        return xpEarned;
+    }
+
     public boolean isCompleted() {
         return completed;
     }
@@ -53,5 +62,9 @@ public class Progress {
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+
+    public void setXpEarned(int xpEarned) {
+        this.xpEarned = xpEarned;
     }
 }

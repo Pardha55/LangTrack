@@ -1,3 +1,4 @@
+
 HELP.md
 target/
 .mvn/wrapper/maven-wrapper.jar
@@ -14,7 +15,7 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr
@@ -31,3 +32,32 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Environment files and secrets ###
+.env
+.env.*
+!.env.example
+secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+
+### Local and production configuration ###
+application-local.properties
+application-prod.properties
+application-local.yml
+application-prod.yml
+application-local.yaml
+application-prod.yaml
+
+### Logs and temporary files ###
+*.log
+logs/
+hs_err_pid*
+
+### Database backups and dumps ###
+*.dump
+*.bak
+*.backup
+startup-log.txt

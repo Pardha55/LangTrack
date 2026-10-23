@@ -1,6 +1,10 @@
 package com.pardha.langtrack.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Lesson {
@@ -14,7 +18,10 @@ public class Lesson {
     private String language;
 
     private String difficulty;
-
+    
+    @Column(name = "XP", nullable = false)
+        private int xp = 100;
+    
     public Lesson() {
     }
 
@@ -50,5 +57,12 @@ public class Lesson {
 
     public void setDifficulty(String difficulty) {
         this.difficulty = difficulty;
+    }
+    public int getXp() {
+    return xp;
+    }
+
+    public void setXp(int xp) {
+    this.xp = xp;
     }
 }

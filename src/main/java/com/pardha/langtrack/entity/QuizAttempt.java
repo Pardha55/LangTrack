@@ -1,3 +1,4 @@
+
 package com.pardha.langtrack.entity;
 
 import java.time.LocalDate;
@@ -26,6 +27,9 @@ public class QuizAttempt {
 
     private LocalDate attemptDate;
 
+    // XP actually awarded for this attempt.
+    private int xpEarned = 0;
+
     public QuizAttempt() {
     }
 
@@ -42,6 +46,7 @@ public class QuizAttempt {
         this.totalQuestions = totalQuestions;
         this.passed = passed;
         this.attemptDate = attemptDate;
+        this.xpEarned = 0;
     }
 
     public Long getId() {
@@ -70,5 +75,18 @@ public class QuizAttempt {
 
     public LocalDate getAttemptDate() {
         return attemptDate;
+    }
+
+    public int getXpEarned() {
+        return xpEarned;
+    }
+
+    public void setXpEarned(int xpEarned) {
+        if (xpEarned < 0) {
+            throw new IllegalArgumentException(
+                    "XP earned cannot be negative");
+        }
+
+        this.xpEarned = xpEarned;
     }
 }

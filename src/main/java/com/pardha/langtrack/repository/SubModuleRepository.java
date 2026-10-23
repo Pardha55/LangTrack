@@ -1,3 +1,4 @@
+
 package com.pardha.langtrack.repository;
 
 import java.util.List;
@@ -8,5 +9,11 @@ import com.pardha.langtrack.entity.SubModule;
 
 public interface SubModuleRepository extends JpaRepository<SubModule, Long> {
 
-    List<SubModule> findByLessonIdOrderByOrderNumber(Long lessonId);
+    List<SubModule> findByModule_Lesson_IdOrderByModule_ModuleNumberAscOrderNumberAsc(
+        Long lessonId);
+
+    List<SubModule> findByModule_Lesson_Id(Long lessonId);
+     
+    List<SubModule> findByModule_IdOrderByOrderNumber(Integer moduleId);
+
 }
